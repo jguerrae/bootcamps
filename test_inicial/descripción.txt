@@ -1,0 +1,44 @@
+En el segundo archivo (random_sample_500.csv) encuentras una muestra de 500 perfiles de LinkedIn que es parte de una base de datos de alrededor de 5000 perfiles de supuestos egresados de esos bootcamps.
+
+ 
+
+El test es sencillo. Necesito que tu generes dos variables adicionales en el archivo random_sample_500.csv que muestren por cada perfil de cual de los bootcamps es egresado y en que año recibió la certificación. La información relevante se encuentra en las variable “certifications” y “education”. Ahí tienes que buscar los nombres de los bootcamps que encuentras en la columna A del archivo ListBootcamps.csv y el año en el cual lo terminó. Ten en mente que los nombres de los bootcamps podrían aparecer mal escritos o cortados. Por eso es importante no buscar de manera exacta si no usando wildcards o haciendo fuzzy search.
+
+ 
+
+Ten también en cuenta que muchos de los perfiles en realidad son irrelevantes (falsos positivos, es decir que no son egresados de ningún bootcamp). Así que no te sorprendas si por la mayoría no encuentras ningún match.
+
+ 
+
+Por favor, no compartas estos archivos con nadie.
+
+ 
+
+La idea del test es ver que tanto te sientes cómodo con la tarea y, si crees que lo puedes hacer, que tan rápidamente podrías llevarla a cabo. Si sientes que te falta el conocimiento o las herramientas necesarias no hay ningún problema. En ese caso por favor hágamelo saber sin ninguna vergüenza porque la tarea es compleja.
+
+ 
+
+Si tienes un resultado, aunque sea parcial, por favor envíame el archivo con las dos variables adicionales (bootcamp y año) y el código que usaste para crearlo antes del sábado a las 11:59 PM. Si los resultados son satisfactorios con gusto podremos agendar una reunión para hablar del trabajo completo y del pago.
+
+
+COSAS A TENER EN CUENTA:
+La mayoría de perfiles son irrelevantes, FP.
+Columnas clave, educación y certificación.
+
+
+
+yeimi.duran@fiscalia.gov.co
+Pasantía, listo!
+
+en 74 encuentro algo.
+
+
+COLUMNAS RELEVANTES
+
+Job history: me puedes servir trabajos que ha tenido de datos, analytica, programación, lenguajes
+Job title: todo lo que tenga que ver con datos y programación
+
+certifications
+education
+
+NECESITO EL BOOTCAMP EGRESADO Y CERTIFICACIÓN
