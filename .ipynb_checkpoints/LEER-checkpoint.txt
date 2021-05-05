@@ -1,0 +1,6 @@
+1_exp: exploración inicial de la base.
+
+2_ext_edu: bootcamps por columna educación.
+2_ext_cert: bootcamps por certificación.
+2_ext_about: bootcamps por about.
+2_ext_merge: eliminar los perfiles repetidos entre los 3 anteriores.
