@@ -1,4 +1,5 @@
 function arrayFromHtml(elems) {
+  console.log(elems);
   tLine = "[";
   for (let i = 0; i < elems.length; i++) {
     const temp = elems[i];
@@ -14,19 +15,24 @@ function arrayFromHtml(elems) {
 function datesFromHtml(elems) {
   tLine = "";
   const times = elems.getElementsByTagName("time");
-  tLine += "'start': '" + times[0].innerHTML + "', ";
-  tLine += "'end': '" + times[1].innerHTML + "'";
+  console.log(times);
+  tLine +=
+    "'start': '" + times.length && times[0] ? times[0].innerHTML : "" + "', ";
+  tLine +=
+    "'end': '" + times.length && times.length >= 2 && times[1]
+      ? times[1].innerHTML
+      : "" + "'";
   return tLine;
 }
 function getEducation() {
   // education-section section id
   const sectio = document.getElementById("education-section");
   const ul = sectio.getElementsByTagName("ul")[0];
-  const lists = ul.getElementsByTagName("li");
+  const lists = ul.children;
   let TotalLine = "[";
   for (let i = 0; i < lists.length; i++) {
     let line = "{";
-    //console.log("forr", i, lists, typeof lists[0].getElementsByClassName);
+    console.log("forr", i, lists, typeof lists[0].getElementsByClassName);
     const temp = lists[i];
 
     const eduOrg = temp.getElementsByClassName("pv-entity__school-name")[0]
@@ -48,6 +54,7 @@ function getEducation() {
   // pv-entity__school-name h3
 
   console.log("after", TotalLine);
+  return TotalLine;
 }
 function getJobTitle() {
   const parent = document.getElementsByClassName(
@@ -141,6 +148,9 @@ function getJobHistory() {
   }
 
   // pv-entity__school-name h3
-
-  console.log("after", TotalLine);
+  return TotalLine;
 }
+function makeLine() {
+  console.log(getEducation() + "," + getJobTitle() + "," + getJobHistory());
+}
+makeLine();
