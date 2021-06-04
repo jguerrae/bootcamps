@@ -14,13 +14,15 @@ function arrayFromHtml(elems) {
 }
 function datesFromHtml(elems) {
   tLine = "";
-  const times = elems.getElementsByTagName("time");
-  //console.log(times);
-  const start = times && times.length && times[0] ? times[0].innerHTML : "";
-  const end = times && times.length && times[1] ? times[1].innerHTML : "";
-  tLine += "'start': '" + start + "', ";
-  tLine += "'end': '" + end + "'";
-  //console.log(tLine);
+  if (elems) {
+    const times = elems.getElementsByTagName("time");
+    //console.log(times);
+    const start = times && times.length && times[0] ? times[0].innerHTML : "";
+    const end = times && times.length && times[1] ? times[1].innerHTML : "";
+    tLine += "'start': '" + start + "', ";
+    tLine += "'end': '" + end + "'";
+    //console.log(tLine);
+  }
   return tLine;
 }
 function getEducation() {
