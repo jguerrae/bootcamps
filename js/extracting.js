@@ -1,5 +1,5 @@
 function arrayFromHtml(elems) {
-  console.log(elems);
+  //console.log(elems);
   tLine = "[";
   for (let i = 0; i < elems.length; i++) {
     const temp = elems[i];
@@ -16,12 +16,11 @@ function datesFromHtml(elems) {
   tLine = "";
   const times = elems.getElementsByTagName("time");
   console.log(times);
-  tLine +=
-    "'start': '" + times.length && times[0] ? times[0].innerHTML : "" + "', ";
-  tLine +=
-    "'end': '" + times.length && times.length >= 2 && times[1]
-      ? times[1].innerHTML
-      : "" + "'";
+  const start = times && times.length && times[0] ? times[0].innerHTML : "";
+  const end = times && times.length && times[1] ? times[1].innerHTML : "";
+  tLine += "'start': '" + start + "', ";
+  tLine += "'end': '" + end + "'";
+  console.log(tLine);
   return tLine;
 }
 function getEducation() {
@@ -32,7 +31,7 @@ function getEducation() {
   let TotalLine = "[";
   for (let i = 0; i < lists.length; i++) {
     let line = "{";
-    console.log("forr", i, lists, typeof lists[0].getElementsByClassName);
+    //console.log("forr", i, lists, typeof lists[0].getElementsByClassName);
     const temp = lists[i];
 
     const eduOrg = temp.getElementsByClassName("pv-entity__school-name")[0]
@@ -43,6 +42,7 @@ function getEducation() {
     line += "'education_org': '" + eduOrg + "',";
     line += "'degrees': " + arrayFromHtml(titles) + ",";
     line += datesFromHtml(times);
+    console.log("edu times", datesFromHtml(times));
 
     if (lists.length - 1 == i) {
       TotalLine += line + "}]";
@@ -61,7 +61,7 @@ function getJobTitle() {
     "pv-text-details__left-panel"
   )[0];
   const title = parent.getElementsByClassName("text-body-medium");
-  console.log("titiel", title[0].innerHTML);
+  //console.log("titiel", title[0].innerHTML);
   return "'" + title[0].innerHTML + "'";
 }
 
@@ -75,15 +75,13 @@ function getJobHistory() {
     const temp = lists[i];
     let line = "";
     // puede tener multiples cargos en la misma empresa
-    console.log(temp, lists.length, temp.getElementsByTagName("ul"));
+    //console.log(temp, lists.length, temp.getElementsByTagName("ul"));
     if (
       temp.getElementsByTagName("ul") &&
       temp.getElementsByTagName("ul").length > 0
     ) {
       const full = temp.getElementsByTagName("ul")[0];
-      console.log(
-        temp.getElementsByClassName("pv-entity__company-summary-info")
-      );
+
       const infoCompany = temp.getElementsByClassName(
         "pv-entity__company-summary-info"
       )[0].children[0].children[1].innerHTML;
@@ -91,7 +89,7 @@ function getJobHistory() {
       for (let i = 0; i < nLists.length; i++) {
         // line
         line += "{";
-        console.log("nLists", infoCompany, nLists[i]);
+        // console.log("nLists", infoCompany, nLists[i]);
         const listT = nLists[i];
         const info = listT.getElementsByClassName(
           "pv-entity__summary-info-v2"
@@ -105,7 +103,7 @@ function getJobHistory() {
         line += "'company_name': '" + infoCompany + "', ";
         line += "'start': '" + ranges[0] + "', ";
         line += "'end': '" + ranges[1] + "' ";
-        console.log("after", !(nLists.length - 1 == i), nLists.length, i);
+        //console.log("after", !(nLists.length - 1 == i), nLists.length, i);
         if (!(nLists.length - 1 == i)) {
           line += "},";
         }
@@ -114,7 +112,7 @@ function getJobHistory() {
       line = "{";
       const section = temp.getElementsByTagName("section")[0];
       const info = section.getElementsByClassName("pv-entity__summary-info")[0];
-      console.log("forr", i, section, info);
+      // console.log("forr", i, section, info);
       const jobTitle = info.getElementsByTagName("h3")[0].innerHTML;
       const company_name = info.getElementsByClassName(
         "pv-entity__secondary-title"
@@ -122,7 +120,7 @@ function getJobHistory() {
       const ranges = info
         .getElementsByClassName("pv-entity__date-range")[0]
         .children[1].innerHTML.split(" – ");
-      console.log(company_name, ranges);
+      //console.log(company_name, ranges);
       line += "'job_title': '" + jobTitle + "', ";
       line += "'company_name': '" + company_name + "', ";
       line += "'start': '" + ranges[0] + "', ";
@@ -139,7 +137,7 @@ function getJobHistory() {
       line += "'degrees': " + arrayFromHtml(titles) + ",";
       line += datesFromHtml(times); */
     }
-    console.log("finished I", i);
+    //console.log("finished I", i);
     if (lists.length - 1 == i) {
       TotalLine += line + "}]";
     } else {
