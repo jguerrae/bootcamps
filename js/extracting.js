@@ -119,9 +119,13 @@ function getJobHistory() {
       const company_name = info.getElementsByClassName(
         "pv-entity__secondary-title"
       )[0].innerHTML;
-      const ranges = info
-        .getElementsByClassName("pv-entity__date-range")[0]
-        .children[1].innerHTML.split(" – ");
+      const ranges =
+        info.getElementsByClassName("pv-entity__date-range") &&
+        info.getElementsByClassName("pv-entity__date-range")[0]
+          ? info
+              .getElementsByClassName("pv-entity__date-range")[0]
+              .children[1].innerHTML.split(" – ")
+          : ["", ""];
       //console.log(company_name, ranges);
       line += "'job_title': '" + jobTitle + "', ";
       line += "'company_name': '" + company_name + "', ";
