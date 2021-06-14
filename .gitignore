@@ -4,3 +4,4 @@ express/*.json
 ~*
 glove*
 .DS*
+js/Profiles/*.txt
